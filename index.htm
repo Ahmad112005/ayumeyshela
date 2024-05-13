@@ -179,38 +179,44 @@
     </div>
 
     <script>
-        function pesanKamar(tipeKamar, harga) {
-            var nama = document.getElementById('nama' + tipeKamar).value;
-            var hp = document.getElementById('hp' + tipeKamar).value;
-            var nomorKamar = document.getElementById('nomorKamar' + tipeKamar).value;
-            var tipeKamarNota = ""; // Variabel untuk menampung tipe kamar di nota
+    function pesanKamar(tipeKamar, harga) {
+        var nama = document.getElementById('nama' + tipeKamar).value;
+        var hp = document.getElementById('hp' + tipeKamar).value;
+        var nomorKamar = document.getElementById('nomorKamar' + tipeKamar).value;
+        var tipeKamarNota = ""; // Variabel untuk menampung tipe kamar di nota
 
-            // Tentukan tipe kamar untuk ditampilkan di nota
-            if (tipeKamar === 'Deluxe') {
-                tipeKamarNota = "Kamar Kelas Ekonomi";
-            } else if (tipeKamar === 'Executive') {
-                tipeKamarNota = "Kamar kelas Menengah";
-            } else if (tipeKamar === 'Presidential') {
-                tipeKamarNota = "Kamar Kelas Atas";
-            }
-
-            var nota = document.getElementById('nota');
-            nota.innerHTML = '<h2>Nota Pesanan Kamar</h2>' +
-                             '<p>Tipe Kamar: ' + tipeKamarNota + '</p>' +
-                             '<p>Harga per Malam: ' + harga + '</p>' +
-                             '<p>Nama: ' + nama + '</p>' +
-                             '<p>Nomor HP: ' + hp + '</p>' +
-                             '<p>Nomor Kamar: ' + nomorKamar + '</p>';
-            nota.style.display = 'block';
-
-            var bayar = document.getElementById('bayar');
-            bayar.style.display = 'block';
+        // Tentukan tipe kamar untuk ditampilkan di nota
+        if (tipeKamar === 'Deluxe') {
+            tipeKamarNota = "Kamar Kelas Ekonomi";
+        } else if (tipeKamar === 'Executive') {
+            tipeKamarNota = "Kamar kelas Menengah";
+        } else if (tipeKamar === 'Presidential') {
+            tipeKamarNota = "Kamar Kelas Atas";
         }
 
-        function bayar() {
-            alert('Pembayaran berhasil.');
-            window.location.reload();
+        // Validasi nama dan nomor HP
+        if (nama.trim() === '' || hp.trim() === '') {
+            alert('Silakan isi kolom Nama dan Nomor HP.');
+            return; // Keluar dari fungsi jika kolom tidak diisi
         }
-    </script>
+
+        var nota = document.getElementById('nota');
+        nota.innerHTML = '<h2>Nota Pesanan Kamar</h2>' +
+                         '<p>Tipe Kamar: ' + tipeKamarNota + '</p>' +
+                         '<p>Harga per Malam: ' + harga + '</p>' +
+                         '<p>Nama: ' + nama + '</p>' +
+                         '<p>Nomor HP: ' + hp + '</p>' +
+                         '<p>Nomor Kamar: ' + nomorKamar + '</p>';
+        nota.style.display = 'block';
+
+        var bayar = document.getElementById('bayar');
+        bayar.style.display = 'block';
+    }
+
+    function bayar() {
+        alert('Pembayaran berhasil.');
+        window.location.reload();
+    }
+</script>
 </body>
 </html>
